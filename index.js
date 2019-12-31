@@ -8,7 +8,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((ctx) => ctx.reply(`Parabéns ${ctx.from.first_name} e seja Bem Vindo ao Bolt!
 O que você quer ganhar no amigo álcool? Use o comando /quero Ex.: /quero Cerveja `));
 
-bot.hears(/\/quero (\.+)/, (ctx) => {
+bot.hears(/\/quero (.+)/, (ctx) => {
     if(ctx.chat.type != 'private') {
         ctx.reply('Esse comando é pra ser rodado no privado!');
         return;

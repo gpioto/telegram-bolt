@@ -9,8 +9,12 @@ bot.start((ctx) => ctx.reply(`Parabéns ${ctx.from.first_name} e seja Bem Vindo 
 O que você quer ganhar no amigo álcool?`));
 
 bot.on('message', (ctx) => {
-    db[ctx.chat.username] = ctx.message
-    ctx.reply(`Parabens, voce escolheu ${ctx.message}`)
+    db[ctx.chat.username] = ctx.message.text
+    ctx.reply(`Parabens, voce escolheu ${ctx.message.text}`)
+})
+
+bot.hears('debug', ctx => {
+    ctx.reply(JSON.stringify(db))
 })
 
 bot.command('sortear', ctx => {

@@ -1,4 +1,4 @@
-const Telegraf = require("telegraf");
+const { Telegraf } = require("telegraf");
 const _ = require("lodash");
 let db = {};
 

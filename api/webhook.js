@@ -53,7 +53,8 @@ async function validateGifts(chat) {
     bot.getChatAdministrators(chat.id),
     client.query(q.ToObject(q.Select("data", resultQuery))),
   ]);
-  const users = admins.map((admin) => admin.user);
+
+  const users = admins.map((admin) => admin.user).filter(user => !user.is_bot);
 
   const missingUsers = users.filter((user) => !gifts[user.username]);
 

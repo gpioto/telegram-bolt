@@ -62,10 +62,10 @@ async function validateGifts(chat) {
 
   if (missingUsers.length) {
     await bot.sendMessage(chat.id, `Ainda faltam ${missing.join(", ")}`);
-    return;
+    return {};
   }
 
-  return users;
+  return { users, gifts };
 }
 
 async function sortHandler(chat) {
@@ -73,7 +73,7 @@ async function sortHandler(chat) {
     return bot.sendMessage(chat.id, "Esse comando é pra ser rodado num grupo!");
   }
 
-  const users = await validateGifts(chat);
+  const { users, gifts } = await validateGifts(chat);
 
   if (!users) return;
 
